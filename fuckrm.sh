@@ -11,10 +11,10 @@ rm() {
         mkdir -p ${dir}
     fi
     removeExpiredDir 
-    declare -a params 
+    params=''
     for p in $@; do
-        if [[ ${p[1]} != '-' ]]; then
-            params+=${p}
+        if [[ ${p:0:1} != '-' ]]; then
+            params="${params} ${p}"
         fi
     done
     mv ${params} ${dir}
